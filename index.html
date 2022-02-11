@@ -5,17 +5,19 @@
 	<script>
 		let actions = {
 			"google": "https://www.google.com/search", 
-			"duckDuckGo": "https://duckduckgo.com", 
+			"duckDuckGo": "https://duckduckgo.com/", 
 			"bing": "https://www.bing.com/search", 
 			"ask": "https://www.ask.com/web"
 		}
 
-		let setSearchEngine = function() {
+		function setSearchEngine() {
 			console.log("It is running!");
-			let form = document.getElementById("searchForm");
+			//let form = document.getElementById("searchForm");
 			let selectedEngine = document.querySelector("input[name=engine]:checked").value;
-			event.preventDefault();
-			form.setAttribute("actions", actions[selectedEngine]);
+			let url = actions[selectedEngine];
+			//event.preventDefault();
+			//form.setAttribute("actions", actions[selectedEngine]);
+			document.getElementById("searchForm").setAttribute("action", url);
 			}
 		
    		window.addEventListener("load", function(){
@@ -28,20 +30,20 @@
 
 <body>
 
-	<form action="" method="POST" id="searchForm">
+	<form action="" method="GET" id="searchForm">
     <label>
 		<input type="text" name="q">
 	</label>
 
 	<label>
 		<select name="engine" id="input"></select>
-		<label>Google<input type="radio" name="engine" value="google"/></label>
-		<label>DuckDuckGo<input type="radio" name="engine" value="duckDuckGo"/></label>
-		<label>Bing<input type="radio" name="engine" value="bing"/></label>
-		<label>Ask<input type="radio" name ="engine" value="ask"/></label>
+		<label>google<input type="radio" name="engine" value="google" id="google"/></label>
+		<label>duckDuckGo<input type="radio" name="engine" value="duckDuckGo" id="duckDuckGo"/></label>
+		<label>bing<input type="radio" name="engine" value="bing" id="bing"/></label>
+		<label>ask<input type="radio" name ="engine" value="ask" id="ask"/></label>
 	</label>
 
-	<input type="submit"/>
+	<input type="submit" name= "submit" value= "Go!"/>
 	</form>
 
 </body>
